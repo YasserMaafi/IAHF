@@ -5,6 +5,8 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage.jsx';
 import AdminPage from './pages/AdminPage';
 import HomePage from './pages/HomePage';
+import ProgramsPage from './pages/ProgramsPage.jsx';
+import ProgramDetailsPage from './pages/ProgramDetailsPage.jsx';
 import Unauthorized from './pages/Unauthorized';
 // Import custom PrivateRoute component for role-based access control
 import PrivateRoute from './components/PrivateRoute';
@@ -45,7 +47,12 @@ function App() {
 
           <Route path="/signup" element={<SignupPage />} />
 
-        <Route path="/Home" element={<HomePage />} />
+          <Route path="/Home" element={<HomePage />} />
+
+          <Route path="/Programs" element={<ProgramsPage />} />
+
+          <Route path="/programs/:id" element={<ProgramDetailsPage />} />
+
           
           {/* Route for unauthorized access attempts */}
           <Route path="/unauthorized" element={<Unauthorized />} />

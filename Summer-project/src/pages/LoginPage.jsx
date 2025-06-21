@@ -24,7 +24,7 @@ function LoginPage() {
       if (res.data.role === 'admin') {
         navigate('/admin');
       } else {
-        navigate('/dashboard');
+        navigate('/home');
       }
     } catch (err) {
       setError(err.response?.data?.error || 'Login failed. Check your credentials.');
