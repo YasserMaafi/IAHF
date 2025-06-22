@@ -22,6 +22,14 @@ function ProgramDetailsPage() {
   }, [id]);
 
 const [message, setMessage] = useState('');
+const [formData, setFormData] = useState({
+  full_name: '',
+  email: '',
+  phone: '',
+  address: '',
+  education_level: '',
+  message: ''
+});
 
 const handleApply = async () => {
   try {
@@ -33,11 +41,18 @@ const handleApply = async () => {
 
     setLoading(true);
     await axios.post('http://localhost:5000/api/applications',
-      { program_id: id, message },
+      { program_id: id, ...formData },
       { headers: { Authorization: `Bearer ${token}` } }
     );
     setApplied(true);
-    setMessage('');
+    setFormData({
+      full_name: '',
+      email: '',
+      phone: '',
+      address: '',
+      education_level: '',
+      message: ''
+    });
   } catch (err) {
     setError(err.response?.data?.error || 'Failed to apply');
   } finally {

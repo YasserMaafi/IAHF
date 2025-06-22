@@ -2,6 +2,10 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { FiArrowRight, FiCheck, FiBookOpen, FiUsers, FiBriefcase, FiCalendar } from 'react-icons/fi';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 function HomePage() {
   const [programs, setPrograms] = useState([]);
@@ -24,6 +28,12 @@ function HomePage() {
       {/* African-Themed Hero Section */}
       <header className="relative bg-gradient-to-r from-green-600 via-yellow-500 to-red-600 text-white overflow-hidden">
         <div className="absolute inset-0 bg-[url('/src/assets/IAHF_logo.png')] opacity-10"></div>
+        <div className="absolute top-5 right-5 w-24 h-24 opacity-50">
+          <img src="/src/assets/charte iahf 1.png" alt="" className="w-full h-full object-contain" />
+        </div>
+        <div className="absolute bottom-5 left-5 w-20 h-20 opacity-45">
+          <img src="/src/assets/charte iahf 2.png" alt="" className="w-full h-full object-contain" />
+        </div>
         <div className="max-w-7xl mx-auto px-6 py-24 md:py-32 text-center relative z-10">
           <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
             <span className="block">AFRICAIN DE HAUTE FORMATION</span>
@@ -48,7 +58,13 @@ function HomePage() {
       </header>
 
       {/* Featured Programs Section */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
+      <section className="relative max-w-7xl mx-auto px-6 py-16">
+        <div className="absolute top-5 right-5 w-20 h-20 opacity-35">
+          <img src="/src/assets/charte iahf 3.png" alt="" className="w-full h-full object-contain" />
+        </div>
+        <div className="absolute bottom-10 left-10 w-16 h-16 opacity-30">
+          <img src="/src/assets/charte iahf 5.png" alt="" className="w-full h-full object-contain" />
+        </div>
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold mb-2 text-green-800">Our Featured Programs</h2>
           <div className="w-20 h-1 bg-red-600 mx-auto"></div>
@@ -125,11 +141,18 @@ function HomePage() {
       </section>
 
       {/* Why Choose Us - African Color Cards */}
-      <section className="bg-gray-50 py-16">
+      <section className="relative bg-gray-50 py-16">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 relative">
+            <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-16 h-16 opacity-70">
+              <img src="/src/assets/charte iahf 4.png" alt="" className="w-full h-full object-contain" />
+            </div>
             <h2 className="text-3xl font-bold mb-2 text-green-800">Why Choose Our Academy?</h2>
             <div className="w-20 h-1 bg-red-600 mx-auto"></div>
+          </div>
+
+          <div className="absolute bottom-5 right-10 w-18 h-18 opacity-25">
+            <img src="/src/assets/charte iahf 2.png" alt="" className="w-full h-full object-contain" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -166,8 +189,166 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <section className="relative max-w-7xl mx-auto px-6 py-16">
+        <div className="absolute top-10 left-5 w-16 h-16 opacity-30">
+          <img src="/src/assets/charte iahf 1.png" alt="" className="w-full h-full object-contain" />
+        </div>
+        <div className="absolute bottom-5 right-5 w-18 h-18 opacity-35">
+          <img src="/src/assets/charte iahf 6.png" alt="" className="w-full h-full object-contain" />
+        </div>
+
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-2 text-green-800">Témoignages</h2>
+          <div className="w-20 h-1 bg-red-600 mx-auto"></div>
+          <p className="text-gray-600 mt-4">Ce que disent nos étudiants</p>
+        </div>
+
+        <Swiper
+          modules={[Autoplay, Pagination]}
+          spaceBetween={30}
+          slidesPerView={3}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+            bulletClass: 'swiper-pagination-bullet !bg-green-600',
+            bulletActiveClass: 'swiper-pagination-bullet-active !bg-green-800'
+          }}
+          breakpoints={{
+            320: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 }
+          }}
+          className="pb-12"
+        >
+          <SwiperSlide>
+            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+              <div className="flex items-center mb-4">
+                <img 
+                  src="/src/assets/ahmed.jpg" 
+                  alt="Ahmed Ben Othmen" 
+                  className="w-16 h-16 rounded-full object-cover mr-4"
+                />
+                <div>
+                  <h4 className="font-bold text-gray-900">Ahmed Ben Othmen</h4>
+                  <p className="text-sm text-green-600">BTS Marketing et Multimédias</p>
+                </div>
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                "Men akther l hajet eli rathouni fel IAHF hiya la flexibilité du temps eli khaletni nwafak mabin khedmti w 9rayti. Les cours compatible m3a l marché d'emploi w l'environnement yeser familial."
+              </p>
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+              <div className="flex items-center mb-4">
+                <img 
+                  src="/src/assets/nour.jpg" 
+                  alt="Nour Rawefi" 
+                  className="w-16 h-16 rounded-full object-cover mr-4"
+                />
+                <div>
+                  <h4 className="font-bold text-gray-900">Nour Rawefi</h4>
+                  <p className="text-sm text-green-600">BTP Soutien en informatique de gestion</p>
+                </div>
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                "Men akther lhajet eli khalewni nakhtar l'IAHF awel haja les stages garantis w les frais yeser abordables - 130 dt par mois pour le BTP."
+              </p>
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+              <div className="flex items-center mb-4">
+                <img 
+                  src="/src/assets/weal.jpg" 
+                  alt="Wael Boussa" 
+                  className="w-16 h-16 rounded-full object-cover mr-4"
+                />
+                <div>
+                  <h4 className="font-bold text-gray-900">Wael Boussa</h4>
+                  <p className="text-sm text-green-600">BTS Marketing et Multimédias</p>
+                </div>
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                "Lawajet barcha 3la l marketing w ken l'IAHF twafer BTS Marketing et Multimédias w diplôme homologué. Blaset centre behya 9riba mel les moyens de transports."
+              </p>
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+              <div className="flex items-center mb-4">
+                <img 
+                  src="/src/assets/fereil.jpg" 
+                  alt="Feriel Mhadhbi" 
+                  className="w-16 h-16 rounded-full object-cover mr-4"
+                />
+                <div>
+                  <h4 className="font-bold text-gray-900">Feriel Mhadhbi</h4>
+                  <p className="text-sm text-green-600">BTS Commerce International</p>
+                </div>
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                "Aham haja fel l'IAHF enou les cours yeser pratiques w diplôme homologé. Ena merteha barcha m3a les formateurs w fama discipline kbira."
+              </p>
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+              <div className="flex items-center mb-4">
+                <img 
+                  src="/src/assets/ahmed.jpg" 
+                  alt="Student" 
+                  className="w-16 h-16 rounded-full object-cover mr-4"
+                />
+                <div>
+                  <h4 className="font-bold text-gray-900">Étudiant IAHF</h4>
+                  <p className="text-sm text-green-600">Formation Professionnelle</p>
+                </div>
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                "L'IAHF m'a donné les compétences nécessaires pour réussir dans ma carrière. Les formateurs sont excellents et l'environnement d'apprentissage est parfait."
+              </p>
+            </div>
+          </SwiperSlide>
+
+          <SwiperSlide>
+            <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+              <div className="flex items-center mb-4">
+                <img 
+                  src="/src/assets/nour.jpg" 
+                  alt="Student" 
+                  className="w-16 h-16 rounded-full object-cover mr-4"
+                />
+                <div>
+                  <h4 className="font-bold text-gray-900">Diplômé IAHF</h4>
+                  <p className="text-sm text-green-600">Développement Web</p>
+                </div>
+              </div>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                "Grâce à la formation à l'IAHF, j'ai pu décrocher un emploi dans le domaine du développement web. La qualité de l'enseignement est remarquable."
+              </p>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </section>
+
       {/* Quick Links - African Colors */}
-      <section className="max-w-7xl mx-auto px-6 py-16">
+      <section className="relative max-w-7xl mx-auto px-6 py-16">
+        <div className="absolute top-5 left-5 w-16 h-16 opacity-25">
+          <img src="/src/assets/charte iahf 2.png" alt="" className="w-full h-full object-contain" />
+        </div>
+        <div className="absolute bottom-5 right-5 w-20 h-20 opacity-30">
+          <img src="/src/assets/charte iahf 4.png" alt="" className="w-full h-full object-contain" />
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Link 
             to="/programs" 
@@ -210,8 +391,110 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Sponsors Section */}
+      <section className="relative bg-gray-50 py-16">
+        <div className="absolute top-5 right-5 w-20 h-20 opacity-40">
+          <img src="/src/assets/charte iahf 3.png" alt="" className="w-full h-full object-contain" />
+        </div>
+        <div className="absolute bottom-5 left-5 w-18 h-18 opacity-35">
+          <img src="/src/assets/charte iahf 6.png" alt="" className="w-full h-full object-contain" />
+        </div>
+        <div className="absolute top-20 left-20 w-14 h-14 opacity-25">
+          <img src="/src/assets/charte iahf 1.png" alt="" className="w-full h-full object-contain" />
+        </div>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold mb-2 text-green-800">Nos Partenaires</h2>
+            <div className="w-20 h-1 bg-red-600 mx-auto"></div>
+            <p className="text-gray-600 mt-4">Ils nous font confiance</p>
+          </div>
+
+          <Swiper
+            modules={[Autoplay]}
+            spaceBetween={40}
+            slidesPerView={4}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            breakpoints={{
+              320: { slidesPerView: 2 },
+              768: { slidesPerView: 3 },
+              1024: { slidesPerView: 4 }
+            }}
+          >
+            <SwiperSlide>
+              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center justify-center h-24">
+                <img 
+                  src="/src/assets/figs.png" 
+                  alt="Partenaire 1" 
+                  className="max-h-16 max-w-full object-contain"
+                />
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center justify-center h-24">
+                <img 
+                  src="/src/assets/idrac.png" 
+                  alt="Partenaire 2" 
+                  className="max-h-16 max-w-full object-contain"
+                />
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center justify-center h-24">
+                <img 
+                  src="/src/assets/wis-logo.png" 
+                  alt="Partenaire 3" 
+                  className="max-h-16 max-w-full object-contain"
+                />
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center justify-center h-24">
+                <img 
+                  src="/src/assets/sup-de-com-logo.png" 
+                  alt="Partenaire 4" 
+                  className="max-h-16 max-w-full object-contain"
+                />
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center justify-center h-24">
+                <img 
+                  src="/src/assets/charte iahf 5.png" 
+                  alt="Partenaire 5" 
+                  className="max-h-16 max-w-full object-contain"
+                />
+              </div>
+            </SwiperSlide>
+
+            <SwiperSlide>
+              <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow flex items-center justify-center h-24">
+                <img 
+                  src="/src/assets/charte iahf 6.png" 
+                  alt="Partenaire 6" 
+                  className="max-h-16 max-w-full object-contain"
+                />
+              </div>
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      </section>
+
       {/* African-Themed Footer */}
-      <footer className="bg-green-800 text-white py-12">
+      <footer className="relative bg-green-800 text-white py-12">
+        <div className="absolute top-5 right-5 w-20 h-20 opacity-45">
+          <img src="/src/assets/charte iahf 1.png" alt="" className="w-full h-full object-contain" />
+        </div>
+        <div className="absolute bottom-10 left-10 w-16 h-16 opacity-40">
+          <img src="/src/assets/charte iahf 5.png" alt="" className="w-full h-full object-contain" />
+        </div>
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
             <h3 className="text-xl font-bold mb-4">AFRICAIN DE HAUTE FORMATION</h3>
