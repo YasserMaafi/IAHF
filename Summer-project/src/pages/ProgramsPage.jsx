@@ -5,6 +5,8 @@ import { FiClock, FiCalendar, FiArrowRight } from 'react-icons/fi';
 
 function ProgramsPage() {
   const [programs, setPrograms] = useState([]);
+  const [filteredPrograms, setFilteredPrograms] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -14,6 +16,7 @@ function ProgramsPage() {
         setLoading(true);
         const res = await axios.get('http://localhost:5000/api/programs');
         setPrograms(res.data);
+        setFilteredPrograms(res.data);
       } catch (err) {
         setError('Failed to load programs. Please try again later.');
         console.error('Failed to fetch programs', err);
@@ -29,7 +32,27 @@ function ProgramsPage() {
   const programImages = {
     "Développement Web Full Stack": '/src/assets/fullstack.png',
     "Maintenance Informatique": '/src/assets/maintenance.jpeg',
-    "Marketing Digital": '/src/assets/Marketing.png', 
+    "Marketing Digital": '/src/assets/Marketing.png',
+    "Comptable d’Entreprise (BTP)": '/src/assets/COMPT.jpeg',
+    "Commerce et Distribution (BTP)": '/src/assets/commerce.png',
+    "Soutien en Informatique de Gestion (BTP)": '/src/assets/informatique de gestion.avif',
+    "Secrétariat (BTP)": '/src/assets/secreteriat.jpeg',
+    "Formalités Douanières (BTP)": '/src/assets/formalité.png',
+    "Comptabilité et Finance (BTS)": '/src/assets/comptablilité.jpeg',
+    "Commerce International (BTS)": '/src/assets/commerce international.png',
+    "Informatique de Gestion (BTS)": '/src/assets/info de gestion.jpg',
+    "Assistant(e) de Direction (BTS)": '/src/assets/assistant de direction.jpeg',
+    "Marketing et Multimédia (BTS)": '/src/assets/Marketing et multimédia.jpg'
+  };
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    if (category === 'All') {
+      setFilteredPrograms(programs);
+    } else {
+      const filtered = programs.filter(p => p.category?.toLowerCase() === category.toLowerCase());
+      setFilteredPrograms(filtered);
+    }
   };
 
   if (loading) {
@@ -61,33 +84,73 @@ function ProgramsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12">
-          <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-            Our Training Programs
+    <div className="min-h-screen bg-white text-gray-800 font-sans">
+      {/* African-Themed Header */}
+      <header className="relative bg-gradient-to-r from-green-600 via-yellow-500 to-red-600 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/src/assets/IAHF_logo.png')] opacity-10"></div>
+        <div className="absolute top-5 right-5 w-24 h-24 opacity-50">
+          <img src="/src/assets/charte iahf 1.png" alt="" className="w-full h-full object-contain" />
+        </div>
+        <div className="absolute bottom-5 left-5 w-20 h-20 opacity-45">
+          <img src="/src/assets/charte iahf 2.png" alt="" className="w-full h-full object-contain" />
+        </div>
+        <div className="max-w-7xl mx-auto px-6 py-16 text-center relative z-10">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+            Nos Formations
           </h1>
-          <p className="mt-3 max-w-2xl mx-auto text-xl text-gray-500 sm:mt-4">
-            Transform your career with our industry-leading courses
-          </p>
+          <p className="text-xl max-w-2xl mx-auto mb-8">Découvrez nos programmes de formation professionnelle</p>
+          <div className="w-20 h-1 bg-white mx-auto"></div>
+        </div>
+      </header>
+
+      <section className="relative max-w-7xl mx-auto px-6 py-16">
+        <div className="absolute top-5 right-5 w-20 h-20 opacity-35">
+          <img src="/src/assets/charte iahf 3.png" alt="" className="w-full h-full object-contain" />
+        </div>
+        <div className="absolute bottom-10 left-10 w-16 h-16 opacity-30">
+          <img src="/src/assets/charte iahf 5.png" alt="" className="w-full h-full object-contain" />
         </div>
 
-        {programs.length === 0 ? (
+        {/* Navigation Tabs */}
+        <div className="flex justify-center mb-12">
+          <div className="bg-white rounded-lg p-1 shadow-lg border border-gray-200">
+            <button
+              onClick={() => handleCategoryChange('BTP')}
+              className={`px-8 py-3 rounded-md font-bold transition-all ${
+                selectedCategory === 'BTP'
+                  ? 'bg-green-800 text-white shadow-md'
+                  : 'text-green-800 hover:bg-green-50'
+              }`}
+            >
+              Formation BTP
+            </button>
+            <button
+              onClick={() => handleCategoryChange('BTS')}
+              className={`px-8 py-3 rounded-md font-bold transition-all ${
+                selectedCategory === 'BTS'
+                  ? 'bg-green-800 text-white shadow-md'
+                  : 'text-green-800 hover:bg-green-50'
+              }`}
+            >
+              Formation BTS
+            </button>
+          </div>
+        </div>
+
+        {filteredPrograms.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-gray-500">No programs available at the moment.</p>
+            <p className="text-gray-500">No programs available for this category.</p>
           </div>
         ) : (
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {programs.map((program) => {
-              // Determine image source with fallbacks
+            {filteredPrograms.map((program) => {
               const imgSrc = programImages[program.title] || program.image_url || '/src/assets/default-program.jpg';
 
               return (
                 <div 
                   key={program.id} 
-                  className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
+                  className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100"
                 >
-                  {/* Image with fallback handling */}
                   <div className="relative h-48 bg-gray-100">
                     <img
                       src={imgSrc}
@@ -97,26 +160,26 @@ function ProgramsPage() {
                         e.target.src = '/src/assets/default-program.jpg';
                       }}
                     />
-                    <div className="absolute top-2 left-2 bg-indigo-600 text-white text-xs px-2 py-1 rounded-full">
-                      {program.category || 'Development'}
-                    </div>
+                    <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-black/70 to-transparent"></div>
+                    <span className="absolute top-4 right-4 bg-green-800 text-white text-xs px-3 py-1 rounded-full">
+                      {program.category || 'Formation'}
+                    </span>
                   </div>
 
                   <div className="p-6">
                     <h2 className="text-xl font-bold text-gray-900 mb-2">{program.title}</h2>
-                    
                     <p className="text-gray-600 mb-4 line-clamp-3">
                       {program.description || 'No description available'}
                     </p>
 
                     <div className="space-y-3 mb-5">
-                      <div className="flex items-center text-sm text-gray-500">
-                        <FiClock className="mr-2 text-indigo-500" />
+                      <div className="flex items-center text-sm text-gray-700">
+                        <FiClock className="mr-2 text-yellow-600" />
                         {program.duration || 'Flexible duration'}
                       </div>
                       {program.start_date && (
                         <div className="flex items-center text-sm text-gray-500">
-                          <FiCalendar className="mr-2 text-indigo-500" />
+                          <FiCalendar className="mr-2 text-green-600" />
                           Starts: {new Date(program.start_date).toLocaleDateString()}
                         </div>
                       )}
@@ -124,7 +187,7 @@ function ProgramsPage() {
 
                     <Link
                       to={`/programs/${program.id}`}
-                      className="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium transition-colors"
+                      className="inline-flex items-center font-medium text-green-800 hover:text-green-600 transition-colors"
                     >
                       View details <FiArrowRight className="ml-1" />
                     </Link>
@@ -134,7 +197,7 @@ function ProgramsPage() {
             })}
           </div>
         )}
-      </div>
+      </section>
     </div>
   );
 }
