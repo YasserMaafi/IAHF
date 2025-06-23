@@ -1,5 +1,7 @@
 // Import necessary components from react-router-dom for routing
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+// Import components
+import Header from './components/Header';
 // Import page components
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage.jsx';
@@ -7,6 +9,7 @@ import AdminPage from './pages/AdminPage';
 import HomePage from './pages/HomePage';
 import ProgramsPage from './pages/ProgramsPage.jsx';
 import ProgramDetailsPage from './pages/ProgramDetailsPage.jsx';
+import ContactPage from './pages/ContactPage';
 import Unauthorized from './pages/Unauthorized';
 // Import custom PrivateRoute component for role-based access control
 import PrivateRoute from './components/PrivateRoute';
@@ -37,7 +40,7 @@ function App() {
     // Router component wraps all route-related components
     <Router>
       <div>
-        
+        <Header />
         {/* Routes component defines all route paths */}
         <Routes>
           {/* Public route for login page */}
@@ -53,6 +56,7 @@ function App() {
 
           <Route path="/programs/:id" element={<ProgramDetailsPage />} />
 
+          <Route path="/contact" element={<ContactPage />} />
           
           {/* Route for unauthorized access attempts */}
           <Route path="/unauthorized" element={<Unauthorized />} />

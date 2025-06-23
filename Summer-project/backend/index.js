@@ -9,6 +9,7 @@ const { authenticate, authorize } = require('./middleware');
 const authRoutes = require('./Auth');
 const programsRoutes = require('./routes/programs');
 const applicationsRoutes = require('./routes/applications');
+const contactRoutes = require('./routes/contact');
 
 const app = express();
 
@@ -39,6 +40,9 @@ app.use('/api/programs', programsRoutes);
 
 // Application routes (protected)
 app.use('/api/applications', applicationsRoutes);
+
+// Contact routes (public)
+app.use('/api/contact', contactRoutes);
 
 // Admin-only test route
 app.get('/api/admin-data', authenticate, authorize(['admin']), (req, res) => {
