@@ -10,6 +10,9 @@ import HomePage from './pages/HomePage';
 import ProgramsPage from './pages/ProgramsPage.jsx';
 import ProgramDetailsPage from './pages/ProgramDetailsPage.jsx';
 import ContactPage from './pages/ContactPage';
+import AboutPage from './pages/AboutPage';
+import StagePage from './pages/StagePage';
+import FormationsPage from './pages/FormationsPage';
 import Unauthorized from './pages/Unauthorized';
 // Import custom PrivateRoute component for role-based access control
 import PrivateRoute from './components/PrivateRoute';
@@ -57,6 +60,12 @@ function App() {
           <Route path="/programs/:id" element={<ProgramDetailsPage />} />
 
           <Route path="/contact" element={<ContactPage />} />
+
+          <Route path="/about" element={<AboutPage />} />
+
+          <Route path="/stage" element={<StagePage />} />
+
+          <Route path="/formations" element={<FormationsPage />} />
           
           {/* Route for unauthorized access attempts */}
           <Route path="/unauthorized" element={<Unauthorized />} />
