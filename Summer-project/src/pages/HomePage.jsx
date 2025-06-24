@@ -57,19 +57,83 @@ function HomePage() {
         </div>
       </header>
 
-      {/* Featured Programs Section */}
+      {/* IAHF Introduction & Gallery */}
       <section className="relative max-w-7xl mx-auto px-6 py-16">
         <div className="absolute top-5 right-5 w-20 h-20 opacity-35">
           <img src="/src/assets/charte iahf 3.png" alt="" className="w-full h-full object-contain" />
         </div>
+        <div className="absolute bottom-5 left-5 w-16 h-16 opacity-30">
+          <img src="/src/assets/charte iahf 4.png" alt="" className="w-full h-full object-contain" />
+        </div>
+        
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-2 text-green-800">IAHF : Centre de Formation Professionnelle</h2>
+          <div className="w-20 h-1 bg-red-600 mx-auto mb-6"></div>
+
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="space-y-4">
+            <img 
+              src="/src/assets/IMG_2172.JPG" 
+              alt="Campus IAHF" 
+              className="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            />
+            <img 
+              src="/src/assets/IMG_2257.JPG" 
+              alt="Étudiants IAHF" 
+              className="w-full h-32 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            />
+          </div>
+          <div className="space-y-4">
+            <img 
+              src="/src/assets/IMG_2191.JPG" 
+              alt="Salle de classe" 
+              className="w-full h-32 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            />
+            <img 
+              src="/src/assets/IMG_2196.JPG" 
+              alt="Laboratoire" 
+              className="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            />
+          </div>
+          <div className="space-y-4">
+            <img 
+              src="/src/assets/1708009132233.png" 
+              alt="Formation technique" 
+              className="w-full h-40 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            />
+            <img 
+              src="/src/assets/1708009132277.png" 
+              alt="Atelier pratique" 
+              className="w-full h-40 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            />
+          </div>
+          <div className="space-y-4">
+            <img 
+              src="/src/assets/image00142.jpeg" 
+              alt="Projet étudiant" 
+              className="w-full h-32 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            />
+            <img 
+              src="/src/assets/graduation.jpg" 
+              alt="Formation IT" 
+              className="w-full h-48 object-cover rounded-lg shadow-md hover:shadow-lg transition-shadow"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Programs Section */}
+      <section className="relative max-w-7xl mx-auto px-6 py-16">
         <div className="absolute bottom-10 left-10 w-16 h-16 opacity-30">
           <img src="/src/assets/charte iahf 5.png" alt="" className="w-full h-full object-contain" />
         </div>
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-2 text-green-800">Our Featured Programs</h2>
+          <h2 className="text-3xl font-bold mb-2 text-green-800">Nos Programmes Phares</h2>
           <div className="w-20 h-1 bg-red-600 mx-auto"></div>
           <p className="text-gray-600 mt-4 max-w-2xl mx-auto">
-            Professional training programs designed for Africa's development
+            Programmes de formation professionnelle conçus pour l'excellence
           </p>
         </div>
 
@@ -364,10 +428,10 @@ function HomePage() {
           </Link>
 
           <Link 
-            to="/applications" 
+            to="/Stage" 
             className="group border-2 border-yellow-500 rounded-xl p-6 hover:bg-yellow-500 transition-all"
           >
-            <h3 className="text-xl font-bold mb-2 group-hover:text-white">My Applications</h3>
+            <h3 className="text-xl font-bold mb-2 group-hover:text-white">Notre Stages</h3>
             <p className="text-gray-600 group-hover:text-white/80">
               Track your enrollment status
             </p>
@@ -390,6 +454,8 @@ function HomePage() {
           </Link>
         </div>
       </section>
+
+
 
       {/* Sponsors Section */}
       <section className="relative bg-gray-50 py-16">

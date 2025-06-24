@@ -32,12 +32,10 @@ function AboutPage() {
         {/* Mission Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
           <div>
-            <h2 className="text-3xl font-bold text-green-800 mb-6">Notre Mission</h2>
+            <h2 className="text-3xl font-bold text-green-800 mb-6">À Propos IAHF</h2>
             <div className="w-20 h-1 bg-red-600 mb-6"></div>
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
-              L'Institut Africain de Haute Formation (IAHF) est un établissement d'enseignement supérieur privé 
-              spécialisé dans la formation professionnelle et technique. Notre mission est de former des techniciens 
-              qualifiés répondant aux besoins du marché du travail tunisien et africain.
+L'INSTITUT AFRICAIN DE HAUTE FORMATION est un centre de formation professionnelle privée en Tunisie crée en 2016. Sa vocation est de vous garantir une formation de qualité et une employabilité certaines. L’IAHF  porte la responsabilité de l’avenir des jeunes. C’est pourquoi, nous mettons tout en œuvre nos efforts ainsi que nos capacités  pour donner à chaque étudiant non seulement un métier, mais aussi une vraie capacité d’intégration professionnelle qui lui assure une meilleure chance de recrutement .
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
               Nous offrons des formations de qualité dans les domaines du BTP (Bâtiment et Travaux Publics) 
@@ -45,13 +43,13 @@ function AboutPage() {
               l'insertion professionnelle.
             </p>
           </div>
-          <div className="flex justify-center">
-            <img 
-              src="/src/assets/IMG_2172.JPG" 
-              alt="IAHF Campus" 
-              className="rounded-xl shadow-lg w-full max-w-md object-cover"
-            />
-          </div>
+<div className="flex justify-center">
+  <img 
+    src="/src/assets/front.JPG" 
+    alt="IAHF Campus" 
+    className="rounded-xl shadow-lg w-full max-w-xs md:max-w-sm object-cover"
+  />
+</div>
         </div>
 
         {/* Values Section */}
