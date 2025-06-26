@@ -1,4 +1,4 @@
-name: Fullstack CI - React & Node.js
+name: Fullstack CI - React & Node.js (No frontend folder)
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: '18'
 
-      # FRONTEND
+      # FRONTEND at root
       - name: Install frontend dependencies
         run: npm install
 
