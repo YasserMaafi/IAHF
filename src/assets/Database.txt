@@ -1,0 +1,39 @@
+  table_name  |   column_name   |          data_type          | is_nullable | is_primary_key | foreign_table_name | foreign_column_name | is_unique
+--------------+-----------------+-----------------------------+-------------+----------------+--------------------+---------------------+-----------
+ applications | id              | integer                     | NO          | YES            |                    |                     | NO
+ applications | user_id         | integer                     | YES         | NO             | users              | id                  | NO
+ applications | program_id      | integer                     | YES         | NO             | programs           | id                  | NO
+ applications | status          | character varying           | YES         | NO             |                    |                     | NO
+ applications | message         | text                        | YES         | NO             |                    |                     | NO
+ applications | applied_at      | timestamp without time zone | YES         | NO             |                    |                     | NO
+ applications | full_name       | character varying           | YES         | NO             |                    |                     | NO
+ applications | email           | character varying           | YES         | NO             |                    |                     | NO
+ applications | phone           | character varying           | YES         | NO             |                    |                     | NO
+ applications | address         | text                        | YES         | NO             |                    |                     | NO
+ applications | education_level | character varying           | YES         | NO             |                    |                     | NO
+ blog_posts   | id              | integer                     | NO          | YES            |                    |                     | NO
+ blog_posts   | title           | character varying           | YES         | NO             |                    |                     | NO
+ blog_posts   | content         | text                        | YES         | NO             |                    |                     | NO
+ blog_posts   | image_url       | text                        | YES         | NO             |                    |                     | NO
+ blog_posts   | created_at      | timestamp without time zone | YES         | NO             |                    |                     | NO
+ messages     | id              | integer                     | NO          | YES            |                    |                     | NO
+ messages     | full_name       | character varying           | YES         | NO             |                    |                     | NO
+ messages     | email           | character varying           | YES         | NO             |                    |                     | NO
+ messages     | subject         | character varying           | YES         | NO             |                    |                     | NO
+ messages     | message         | text                        | YES         | NO             |                    |                     | NO
+ messages     | sent_at         | timestamp without time zone | YES         | NO             |                    |                     | NO
+ programs     | id              | integer                     | NO          | YES            |                    |                     | NO
+ programs     | title           | character varying           | NO          | NO             |                    |                     | NO
+ programs     | category        | character varying           | YES         | NO             |                    |                     | NO
+ programs     | description     | text                        | YES         | NO             |                    |                     | NO
+ programs     | duration        | character varying           | YES         | NO             |                    |                     | NO
+ programs     | start_date      | date                        | YES         | NO             |                    |                     | NO
+ programs     | end_date        | date                        | YES         | NO             |                    |                     | NO
+ programs     | image_url       | text                        | YES         | NO             |                    |                     | NO
+ programs     | created_at      | timestamp without time zone | YES         | NO             |                    |                     | NO
+ users        | id              | integer                     | NO          | YES            |                    |                     | NO
+ users        | username        | character varying           | NO          | NO             |                    |                     | YES
+ users        | email           | character varying           | NO          | NO             |                    |                     | YES
+ users        | password        | text                        | NO          | NO             |                    |                     | NO
+ users        | role            | character varying           | NO          | NO             |                    |                     | NO
+(36 rows)
